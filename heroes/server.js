@@ -12,7 +12,7 @@ app.use(express.json());
 //connection to Postgres
 
 const Postgres = new Pool({ ssl: { rejectUnauthorized: false } });
-
+//selectionner les étudiant
 app.get('/heroes', async (_req, res) => {
     let heroes;
     try {
@@ -27,7 +27,7 @@ app.get('/heroes', async (_req, res) => {
         data: heroes.rows,
     });
 });
-
+//selectionner les heros avec leurs noms
 app.get('/heroes/:name', async (req, res) => {
     const heroesName = req.params.name;
     let name;
@@ -46,6 +46,7 @@ app.get('/heroes/:name', async (req, res) => {
     })
 });
 
+//Ajouter aun heros
 app.post('/heroes', async (req, res) => {
     const hero = req.body
     console.log(hero)
