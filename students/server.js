@@ -13,6 +13,7 @@ app.use(express.json());
 
 const Postgres = new Pool({ ssl: { rejectUnauthorized: false } });
 
+//selectionner les étudiant
 app.get('/students', async (_req, res) => {
     let name;
     try {
@@ -27,7 +28,7 @@ app.get('/students', async (_req, res) => {
         data: name.rows,
     });
 });
-
+//Ajouter un étudiant !
 app.post("/students", async (req, res) => {
     const students = req.body.name
     try {
